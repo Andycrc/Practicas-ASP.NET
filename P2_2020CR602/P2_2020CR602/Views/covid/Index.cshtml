@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+     
+    
+}
+
+<h2 class="text-center">Registro covid</h2>
+<p class="text-center">El siguiente formulario es para llenar el registro de casos reportados de
+    <br />Covid por departamento y genero.
+</p>
+
+<div class="container">
+    <form method="post" asp-action="Create">
+        <div class="justify-content-start">
+            <h5>Reportar casos</h5>
+        </div>
+
+    
+        <div class="form-group row mb-4">
+            <div class="col-md-6">
+                <p>Departamento</p>
+            
+                    @Html.DropDownList("id_departamento", ViewData["listDepa"] as SelectList, "-- Seleccione un departamento --", new { @class = "form-control" })         
+            
+
+            </div>
+             <div class="col-md-6">
+                <p>Genero</p>
+           
+                    @Html.DropDownList("id_genero", ViewData["listGenero"] as SelectList, "-- Seleccione un genero --", new { @class = "form-control" })         
+            
+
+            </div>
+
+        </div>
+
+        @*Segundo apartado*@
+        <div class="form-group row mb-4">
+            <div class="col-md-4">
+                <p>Casos confirmados</p>
+           
+                @Html.TextBox("casos_confirmados", null, new { @class = "form-control", type = "number", step = "1" })
+            
+            </div>
+            <div class="col-md-4">
+                <p>Numero de Recuperados</p>
+           
+                @Html.TextBox("recuperados", null, new { @class = "form-control", type = "number", step = "1" })
+            
+            </div>
+            <div class="col-md-4">
+                <p>Numero de Fallecidos</p>
+            
+                @Html.TextBox("fallecidos", null, new { @class = "form-control", type = "number", step = "1" })
+            
+            </div>
+
+        </div>
+    
+
+        @*Tercer apartado*@
+         <div class="form-group row mb-4">
+             <div class="col-md-12">
+                 <button class="btn btn-success form-control" type="submit">Guardar Registro</button>
+
+             </div>
+         </div>
+     </form>
+
+     @*Table*@
+
+     <hr />
+
+     <div class="mt-5">
+         <h3>Casos Reportados</h3>
+         <table class="table">
+              <thead>
+                <tr>
+                  <th>Departamento</th>
+                  <th>Género</th>
+                  <th>Casos Confirmados</th>
+                  <th>Recuperados</th>
+                  <th>Fallecidos</th>
+                </tr>
+              </thead>
+              <tbody>
+                  @foreach (var casosPorDepGen in ViewBag.CasosPorDepartamentoGenero)
+                    {
+                        <tr>
+                            <td>@casosPorDepGen.Departamento</td>
+                            <td>@casosPorDepGen.Genero</td>
+                            <td>@casosPorDepGen.CasosConfirmados</td>
+                            <td>@casosPorDepGen.Recuperados</td>
+                            <td>@casosPorDepGen.Fallecidos</td>
+                        </tr>
+                    }
+    
+
+
+              </tbody>
+        </table>
+        <h2 class="text-center">Derechos Reservados: Anderon Carcamo</h2>
+     </div>
+     
+
+</div>

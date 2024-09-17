@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+}
+<h1>Mantenimiento de equipos</h1>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        <label>Nombre</label>
+    </div>
+    <div class="col-sm-4">
+
+        @Html.TextBox("nombre", " ",new {@class="form-control"})
+    </div>
+
+
+</div>
+
+<div class="form-group row mb-4">
+
+    <div class="col-sm-2">
+        @Html.Label("lblDescripcion", "descripcion")
+    </div>
+    <div class="col-sm-4">
+        @Html.TextArea("descripcion", "", new {@class="form-control"})
+    </div>
+
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblTipoEquipo", "tipo_equipo")
+    </div>
+</div>
+
+
